@@ -8,6 +8,16 @@
                     <a href="{{ route($value['name']) }}" class="hover:underline">{{ $value['name'] }}</a>
                 </li>
             @endforeach
+
+            @if (is_null(Auth::user()))
+                <li class="mr-4 md:mr-6 md:last:mr-0">
+                    <a href="{{ route('login') }}" class="hover:underline">login</a>
+                </li>
+
+                <li class="mr-4 md:mr-6 md:last:mr-0">
+                    <a href="{{ route('register') }}" class="hover:underline">register</a>
+                </li>
+            @endif
         </ul>
     </div>
 </footer>
