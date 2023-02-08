@@ -5,3 +5,13 @@
     'resources/css/app.css',
     'resources/js/app.js'
 ])
+
+@php
+    $scripts = [
+        'login-modal-popup'
+    ];
+@endphp
+
+@foreach($scripts as $key => $value)
+    @include('includes.scripts.'.$value)
+@endforeach
