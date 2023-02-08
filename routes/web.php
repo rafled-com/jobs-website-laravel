@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::controller(JobPostController::class)->group(function() {
+        Route::get('hire', 'view')->name('hire');
+    });
 });
