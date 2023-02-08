@@ -7,9 +7,11 @@
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ Config::get('app.name') }}</span>
         </a>
         <div class="flex md:order-2 space-x-4">
-            <button type="button" class="" onclick="toggleLoginPopup()">
-                <x-bx-user class="w-7 h-7" />
-            </button>
+            @if (is_null(Auth::user()))
+                <button type="button" class="" onclick="toggleLoginPopup()">
+                    <x-bx-user class="w-7 h-7" />
+                </button>
+            @endif
             <button type="button" class="text-white bg-light_primary hover:bg-light_hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-dark_primary dark:hover:bg-dark_hover dark:focus:ring-blue-800">
                 Post Jobs
             </button>
@@ -29,5 +31,6 @@
         </div>
     </div>
 </nav>
-
-@include('includes.popup-modal')
+@if (is_null(Auth::user()))
+    @include('includes.popup-modal')
+@endif
